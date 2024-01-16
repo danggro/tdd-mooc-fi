@@ -90,7 +90,8 @@ function createApp(database: Database) {
       let holidayPlain = Temporal.PlainDate.from(row.holiday)
       if (
         date &&
-        convertDateToPlainDate(date).toJSON() === holidayPlain.toJSON()
+        date.getTime() === holiday.getTime() &&
+        datePlain.toJSON() === holidayPlain.toJSON()
       ) {
         return true;
       }
