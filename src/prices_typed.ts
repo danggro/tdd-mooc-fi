@@ -73,14 +73,14 @@ function createApp(database: Database) {
 
   function calculateReduction(date: Date | undefined, datePlain: Temporal.PlainDate | undefined) {
     let reduction = 0;
-    if (date && datePlain && isMonday(date, datePlain) && !isHoliday(datePlain)) {
+    if (date && datePlain && isMonday(datePlain) && !isHoliday(datePlain)) {
       reduction = 35;
     }
     return reduction;
   }
 
-  function isMonday(date: Date, datePlain: Temporal.PlainDate) {
-    return date.getDay() === 1 && datePlain.dayOfWeek === 1;
+  function isMonday(datePlain: Temporal.PlainDate) {
+    return datePlain.dayOfWeek === 1;
   }
 
   function isHoliday(datePlain: Temporal.PlainDate) {
