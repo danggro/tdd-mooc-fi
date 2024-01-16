@@ -5,9 +5,7 @@ import { Temporal } from "@js-temporal/polyfill";
 
 // Refactor the following code to get rid of the legacy Date class.
 // Use Temporal.PlainDate instead. See /test/date_conversion.spec.mjs for examples.
-function convertDateToPlainDate(date: Date | undefined): Temporal.PlainDate | undefined {
-  if(date)return Temporal.Instant.from(date.toISOString()).toZonedDateTimeISO("UTC").toPlainDate();
-}
+
 function createApp(database: Database) {
   const app = express();
 
