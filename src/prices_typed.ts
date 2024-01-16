@@ -5,7 +5,7 @@ import { Temporal } from "@js-temporal/polyfill";
 
 // Refactor the following code to get rid of the legacy Date class.
 // Use Temporal.PlainDate instead. See /test/date_conversion.spec.mjs for examples.
-function convertDateToPlainDate(date: Date): Temporal.PlainDate | undefined {
+function convertDateToPlainDate(date: Date | undefined): Temporal.PlainDate | undefined {
   if(date)return Temporal.Instant.from(date.toISOString()).toZonedDateTimeISO("UTC").toPlainDate();
 }
 function createApp(database: Database) {
@@ -71,9 +71,9 @@ function createApp(database: Database) {
     return Math.ceil(baseCost * (1 - reduction / 100));
   }
 
-  function calculateReduction(date: Date | undefined, datePlain: Temporal.PlainDate) {
+  function calculateReduction(date: Date | undefined, datePlain: Temporal.PlainDate | undefined) {
     let reduction = 0;
-    if (date && isMonday(date, convertDateToPlainDate(date)) && !isHoliday(date, convertDateToPlainDate(date))) {
+    if (date && datePlain && isMonday(date, datePlain) && !isHoliday(date, datePlain)) {
       reduction = 35;
     }
     return reduction;
