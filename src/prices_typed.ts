@@ -2,7 +2,7 @@ import "./polyfills";
 import express from "express";
 import { Database } from "./database";
 import { Temporal } from "@js-temporal/polyfill";
-import "../src/polyfills";
+import "./polyfills";
 
 // Refactor the following code to get rid of the legacy Date class.
 // Use Temporal.PlainDate instead. See /test/date_conversion.spec.mjs for examples.
